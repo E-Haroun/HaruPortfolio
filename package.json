@@ -11,8 +11,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "lint": "eslint . && prettier --check .",
-    "format": "prettier --write .",
+    "lint": "eslint . && prettier --check src tests .github README.md \"*.{js,mjs,ts,json}\"",
+    "format": "prettier --write src tests .github README.md \"*.{js,mjs,ts,json}\"",
     "test": "playwright test"
   },
   "dependencies": {

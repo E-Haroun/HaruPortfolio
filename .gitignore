@@ -5,9 +5,6 @@ test-results/
 playwright-report/
 .env*
 
-# Private sources: recruiter CVs, the single-file prototype and the working notes stay off the public repo
+# Private sources stay off the public repo: recruiter CVs and the single-file prototype
 private/
 /index.html
-/CLAUDE.md
-/PROMPT.md
-.claude/

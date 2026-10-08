@@ -21,7 +21,7 @@ export interface MatchResult {
   top: [string, number][];
 }
 
-// ponytail: keyword and synonym matching, not embeddings; swap for a real model if the demo ever needs semantics.
+// Keyword and synonym matching on purpose: instant, and the text never leaves the browser.
 export function analyze(jobDescription: string): MatchResult | null {
   const text = norm(jobDescription);
   const hits = SK.flatMap((group) => group.items).filter((it) => it.terms.some((term) => has(text, term)));
