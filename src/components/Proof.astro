@@ -1,6 +1,6 @@
 ---
-import { STATS } from '../data/extras';
-import { L, ui, type Lang } from '../data/ui';
+import { STORY } from '../data/extras';
+import { ui, type Lang } from '../data/ui';
 
 interface Props {
   lang: Lang;
@@ -18,7 +18,17 @@ const t = ui[lang];
       </div>
     </div>
 
-    <div class="bento">
+    <div class="story">
+      <!-- The incident told in plain words, one step at a time -->
+      <ol class="steps">
+        {STORY.map((step) => (
+          <li class="reveal">
+            <h3>{step.title[lang]}</h3>
+            <p>{step.text[lang]}</p>
+          </li>
+        ))}
+      </ol>
+
       <!-- Signature element: a real KQL query and the incident as a step chart. Only the three measured levels, no invented points. -->
       <aside class="incident reveal" aria-label={t['inc.label']}>
         <div class="bar">
@@ -30,6 +40,7 @@ const t = ui[lang];
 | <span class="kw">where</span> name == <span class="str">"scoring"</span>
 | <span class="kw">summarize</span> p95 = percentile(duration, 95)
     <span class="kw">by</span> bin(timestamp, 1d)</pre>
+        <p class="cap">{t['inc.query']}</p>
         <div class="chart">
           <svg viewBox="0 0 360 150" role="img" aria-label={t['inc.chart']}>
             <g stroke="var(--line)" stroke-width="1">
@@ -79,16 +90,8 @@ const t = ui[lang];
             <span class="r3">{t['inc.r3']}</span>
           </div>
         </div>
-        <p class="find" set:html={t['inc.find']} />
+        <p class="cap">{t['inc.p95']}</p>
       </aside>
-
-      {STATS.map((s) => (
-        <div class="stat reveal">
-          <b>{L(s.value, lang)}</b>
-          <p>{s.label[lang]}</p>
-          <small>{s.from[lang]}</small>
-        </div>
-      ))}
     </div>
   </div>
 </section>

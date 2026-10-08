@@ -115,39 +115,35 @@ export const SAMPLES: { label: Tr; text: Tr }[] = [
   },
 ];
 
-/** Measured results shown next to the investigation card. Every figure comes from a real mission. */
-export const STATS: { value: string | Tr; label: Tr; from: Tr }[] = [
+/** The production incident of the home page, told in plain words. Every figure comes from the real investigation. */
+export const STORY: { title: Tr; text: Tr }[] = [
   {
-    value: { fr: '6 713', en: '6,713' },
-    label: {
-      fr: "scorings concernés par un biais d'imputation KNN que j'ai mis en évidence",
-      en: 'scorings affected by a KNN imputation bias I uncovered',
+    title: { fr: 'Le symptôme', en: 'The symptom' },
+    text: {
+      fr: "Le calcul du score de crédit, qui prenait environ 6 secondes, s'est mis à en prendre environ 70. Cela a duré 10 jours et touché environ 2 800 dossiers.",
+      en: 'Credit scoring, which took about 6 seconds, started taking about 70. It lasted 10 days and affected about 2,800 applications.',
     },
-    from: { fr: 'Scoring crédit IA · LOCAM', en: 'AI credit scoring · LOCAM' },
   },
   {
-    value: '165 / 165',
-    label: {
-      fr: 'relances réussies : idempotence prouvée face à la double livraison de messages',
-      en: 'retries succeeded: idempotency proven against double message delivery',
+    title: { fr: 'La recherche', en: 'The search' },
+    text: {
+      fr: "J'ai suivi le parcours des demandes dans les journaux de l'application, étape par étape, pour voir où le temps se perdait.",
+      en: 'I followed the requests through the application logs, step by step, to see where the time was going.',
     },
-    from: { fr: 'Scoring crédit IA · LOCAM', en: 'AI credit scoring · LOCAM' },
   },
   {
-    value: '121 → 2',
-    label: {
-      fr: "requêtes SQL pour afficher l'écran candidats",
-      en: 'SQL queries to render the candidates screen',
+    title: { fr: 'La cause', en: 'The cause' },
+    text: {
+      fr: 'Un seul appel à un service externe restait bloqué 68 secondes. Pendant ce temps, tout le lot de demandes attendait avec lui.',
+      en: 'A single call to an external service was hanging for 68 seconds. Meanwhile, the whole batch of requests waited with it.',
     },
-    from: { fr: 'DataRH · projet interne', en: 'DataRH · internal project' },
   },
   {
-    value: '≈ 20',
-    label: {
-      fr: 'microservices Azure Functions en maintenance et en évolution',
-      en: 'Azure Functions microservices maintained and evolved',
+    title: { fr: 'Le résultat', en: 'The outcome' },
+    text: {
+      fr: 'Après le correctif, le calcul du score est revenu à environ 6 secondes.',
+      en: 'After the fix, scoring went back to about 6 seconds.',
     },
-    from: { fr: 'Scoring crédit IA · LOCAM', en: 'AI credit scoring · LOCAM' },
   },
 ];
 

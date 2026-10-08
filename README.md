@@ -34,14 +34,14 @@ Première exécution des tests : `npx playwright install chromium`.
 
 Tout le contenu est dans `src/data/`, séparé du code. Chaque texte a un champ `fr` et un champ `en`.
 
-| Fichier     | Contenu                                                                    |
-| ----------- | -------------------------------------------------------------------------- |
-| `ui.ts`     | Libellés de l'interface, accroche, titres de section, SEO                  |
-| `cases.ts`  | Études de cas et projets                                                   |
-| `path.ts`   | Expériences et formation                                                   |
-| `skills.ts` | Compétences, missions qui les prouvent, mots-clés de la démo               |
-| `extras.ts` | Coordonnées, certifications, langues, FAQ, offres d'exemple, chiffres clés |
-| `guide.ts`  | Répliques du personnage-guide, par section et selon le score de la démo    |
+| Fichier     | Contenu                                                                          |
+| ----------- | -------------------------------------------------------------------------------- |
+| `ui.ts`     | Libellés de l'interface, accroche, titres de section, SEO                        |
+| `cases.ts`  | Études de cas et projets                                                         |
+| `path.ts`   | Expériences et formation                                                         |
+| `skills.ts` | Compétences, missions qui les prouvent, mots-clés de la démo                     |
+| `extras.ts` | Coordonnées, certifications, langues, FAQ, offres d'exemple, récit de l'incident |
+| `guide.ts`  | Répliques du personnage-guide, par section et selon le score de la démo          |
 
 L'apparence du personnage (cheveux, barbe, lunettes) se règle dans `AVATAR`, en bas de `extras.ts`.
 
