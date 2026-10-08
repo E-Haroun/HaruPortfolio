@@ -1,0 +1,124 @@
+---
+import { CASES, DOMAINS, type Domain } from '../data/cases';
+import { ui, type Lang } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+const domTxt = (dom: Domain[]) => dom.map((d) => DOMAINS[d][lang]).join(' · ');
+const featured = CASES.flatMap((c) => (c.featured ? [{ ...c, ...c.featured }] : []));
+const minis = CASES.filter((c) => !c.featured);
+---
+
+<section class="block" id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">{t['work.eyebrow']}</div>
+        <h2>{t['work.title']}</h2>
+      </div>
+      <div class="filters" role="group" aria-label={t['work.filter']}>
+        <button type="button" data-f="all" aria-pressed="true">
+          {t.all}
+        </button>
+        {Object.entries(DOMAINS).map(([key, label]) => (
+          <button type="button" data-f={key} aria-pressed="false">
+            {label[lang]}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="cases" id="cases">
+      {featured.map((c) => (
+        <article class="case" data-dom={c.dom.join(' ')}>
+          <div class="meta">
+            <span class="dom">{domTxt(c.dom)}</span>
+            <span>
+              {c.org[lang]} · {c.when}
+            </span>
+          </div>
+          <h3>{c.title[lang]}</h3>
+          <p>{c.sum[lang]}</p>
+          <ul class="metrics">
+            {c.metrics[lang].map((m) => (
+              <li>{m}</li>
+            ))}
+          </ul>
+          <div class="stack">
+            {c.stack.map((s) => (
+              <span class="chip">{s}</span>
+            ))}
+          </div>
+          <button type="button" class="more" data-case={c.id}>
+            {t['work.more']}
+          </button>
+        </article>
+      ))}
+    </div>
+
+    <div class="minis" id="minis">
+      {minis.map((c) => (
+        <article class="mini" data-dom={c.dom.join(' ')}>
+          <div class="meta">
+            <span class="dom">{domTxt(c.dom)}</span>
+            <span>{c.when}</span>
+          </div>
+          <h3>{c.title[lang]}</h3>
+          <p>{c.org[lang]}</p>
+          <p>{c.sum[lang]}</p>
+          <div class="stack">
+            {c.stack.map((s) => (
+              <span class="chip">{s}</span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="empty" id="empty" hidden>
+      {t['work.empty']}
+    </p>
+  </div>
+
+  {featured.map((c) => (
+    <dialog id={`dlg-${c.id}`} aria-labelledby={`dlg-${c.id}-title`}>
+      <div class="dlg-head">
+        <div>
+          <div class="eyebrow">
+            {c.org[lang]} · {c.when}
+          </div>
+          <h3 id={`dlg-${c.id}-title`}>{c.title[lang]}</h3>
+        </div>
+        <button type="button" class="x" data-close aria-label={t['dlg.close']}>
+          ×
+        </button>
+      </div>
+      <div class="dlg-body">
+        {c.detail[lang].map(([heading, body]) => (
+          <div>
+            <h4>{heading}</h4>
+            {Array.isArray(body) ? (
+              <ul>
+                {body.map((b) => (
+                  <li>{b}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>{body}</p>
+            )}
+          </div>
+        ))}
+        <div>
+          <h4>{t['dlg.stack']}</h4>
+          <div class="stack">
+            {c.stack.map((s) => (
+              <span class="chip">{s}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </dialog>
+  ))}
+</section>

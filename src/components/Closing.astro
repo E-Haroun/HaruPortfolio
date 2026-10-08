@@ -1,0 +1,92 @@
+---
+import { CERTS, FAQ, HACKS, LANGS, PROFILE } from '../data/extras';
+import { L, ui, type Lang } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<section class="block" id="certs">
+  <div class="wrap two">
+    <div>
+      <h2 class="eyebrow">{t['certs.eyebrow']}</h2>
+      <ul class="list">
+        {CERTS.map(([year, name]) => (
+          <li>
+            <span class="y">{year}</span>
+            <span>{name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h2 class="eyebrow">{t['certs.hack']}</h2>
+      <ul class="list">
+        {HACKS.map((h) => (
+          <li>
+            <span>{L(h, lang)}</span>
+          </li>
+        ))}
+      </ul>
+      <h2 class="eyebrow">{t['certs.lang']}</h2>
+      <ul class="list">
+        {LANGS[lang].map(([code, label]) => (
+          <li>
+            <span class="y">{code}</span>
+            <span>{label}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">FAQ</div>
+        <h2>{t['faq.title']}</h2>
+      </div>
+    </div>
+    {FAQ[lang].map(([question, answer]) => (
+      <details>
+        <summary>{question}</summary>
+        <p>{answer}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap contact">
+    <div>
+      <div class="eyebrow">{t['contact.eyebrow']}</div>
+      <h2>{t['contact.title']}</h2>
+      <p class="sub">{t['contact.sub']}</p>
+    </div>
+    <div class="coord">
+      <div class="line">
+        <div>
+          <small>Email</small>
+          <span id="mail">{PROFILE.email}</span>
+        </div>
+        <button type="button" class="copy" data-copy="mail">
+          {t['contact.copy']}
+        </button>
+      </div>
+      <div class="line">
+        <div>
+          <small>LinkedIn</small>
+          <span>linkedin.com/in/eharoun</span>
+        </div>
+        <a class="copy" href={PROFILE.linkedin} target="_blank" rel="noopener">
+          {t['contact.open']}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

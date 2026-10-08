@@ -1,0 +1,38 @@
+---
+import { SAMPLE } from '../data/extras';
+import { ui, type Lang } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = ui[lang];
+---
+
+<section class="block" id="match">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">{t['match.eyebrow']}</div>
+        <h2>{t['match.title']}</h2>
+      </div>
+      <p>{t['match.sub']}</p>
+    </div>
+    <div class="demo">
+      <div class="panel">
+        <label for="jd">{t['match.label']}</label>
+        <textarea id="jd" set:text={SAMPLE[lang]} />
+        <div class="row">
+          <button type="button" class="btn btn-primary" id="run">
+            {t['match.run']}
+          </button>
+          <button type="button" class="btn btn-ghost" id="sample">
+            {t['match.sample']}
+          </button>
+        </div>
+        <p class="note">{t['match.note']}</p>
+      </div>
+      <div class="panel res" id="result" aria-live="polite"></div>
+    </div>
+  </div>
+</section>

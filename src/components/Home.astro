@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from './Hero.astro';
+import Work from './Work.astro';
+import Path from './Path.astro';
+import Skills from './Skills.astro';
+import Match from './Match.astro';
+import Closing from './Closing.astro';
+import type { Lang } from '../data/ui';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+---
+
+<Layout lang={lang}>
+  <Hero lang={lang} />
+  <Work lang={lang} />
+  <Path lang={lang} />
+  <Skills lang={lang} />
+  <Match lang={lang} />
+  <Closing lang={lang} />
+</Layout>
