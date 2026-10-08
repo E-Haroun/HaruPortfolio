@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from './Hero.astro';
-import Proof from './Proof.astro';
 import Closing from './Closing.astro';
 import Cases from '../islands/Cases';
 import Path from '../islands/Path';
@@ -16,7 +15,6 @@ const { lang } = Astro.props;
 
 <Layout lang={lang}>
   <Hero lang={lang} />
-  <Proof lang={lang} />
   <section class="block" id="work">
     <div class="wrap">
       <Cases lang={lang} client:idle />

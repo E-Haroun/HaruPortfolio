@@ -115,38 +115,6 @@ export const SAMPLES: { label: Tr; text: Tr }[] = [
   },
 ];
 
-/** The production incident of the home page, told in plain words. Every figure comes from the real investigation. */
-export const STORY: { title: Tr; text: Tr }[] = [
-  {
-    title: { fr: 'Le symptôme', en: 'The symptom' },
-    text: {
-      fr: "Le calcul du score de crédit, qui prenait environ 6 secondes, s'est mis à en prendre environ 70. Cela a duré 10 jours et touché environ 2 800 dossiers.",
-      en: 'Credit scoring, which took about 6 seconds, started taking about 70. It lasted 10 days and affected about 2,800 applications.',
-    },
-  },
-  {
-    title: { fr: 'La recherche', en: 'The search' },
-    text: {
-      fr: "J'ai suivi le parcours des demandes dans les journaux de l'application, étape par étape, pour voir où le temps se perdait.",
-      en: 'I followed the requests through the application logs, step by step, to see where the time was going.',
-    },
-  },
-  {
-    title: { fr: 'La cause', en: 'The cause' },
-    text: {
-      fr: 'Un seul appel à un service externe restait bloqué 68 secondes. Pendant ce temps, tout le lot de demandes attendait avec lui.',
-      en: 'A single call to an external service was hanging for 68 seconds. Meanwhile, the whole batch of requests waited with it.',
-    },
-  },
-  {
-    title: { fr: 'Le résultat', en: 'The outcome' },
-    text: {
-      fr: 'Après le correctif, le calcul du score est revenu à environ 6 secondes.',
-      en: 'After the fix, scoring went back to about 6 seconds.',
-    },
-  },
-];
-
 /** Traits of the guide character: adjust them so it looks like the real person. */
 export const AVATAR: { hair: 'short' | 'curly' | 'none'; beard: boolean; glasses: boolean } = {
   hair: 'short',

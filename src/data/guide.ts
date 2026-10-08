@@ -29,10 +29,6 @@ export const GUIDE = {
     fr: "Je n'ai repéré aucune compétence technique. Essayez avec une fiche de poste plus détaillée.",
     en: "I couldn't spot any technical skill. Try a more detailed job description.",
   },
-  proof: {
-    fr: 'Un vrai incident de production, raconté en quatre étapes : le symptôme, la recherche, la cause, le résultat.',
-    en: 'A real production incident, told in four steps: the symptom, the search, the cause, the outcome.',
-  },
   work: {
     fr: 'Quatre études de cas détaillées. Filtrez par domaine, puis ouvrez celle qui ressemble à votre contexte.',
     en: 'Four detailed case studies. Filter by domain, then open the one closest to your context.',
