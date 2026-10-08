@@ -62,30 +62,35 @@ const t = ui[lang];
 </section>
 
 <section class="block" id="contact">
-  <div class="wrap contact">
-    <div>
-      <div class="eyebrow">{t['contact.eyebrow']}</div>
-      <h2>{t['contact.title']}</h2>
-      <p class="sub">{t['contact.sub']}</p>
-    </div>
-    <div class="coord">
-      <div class="line">
-        <div>
-          <small>Email</small>
-          <span id="mail">{PROFILE.email}</span>
-        </div>
-        <button type="button" class="copy" data-copy="mail">
-          {t['contact.copy']}
-        </button>
-      </div>
-      <div class="line">
-        <div>
-          <small>LinkedIn</small>
-          <span>linkedin.com/in/eharoun</span>
-        </div>
-        <a class="copy" href={PROFILE.linkedin} target="_blank" rel="noopener">
-          {t['contact.open']}
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <div class="eyebrow">{t['contact.eyebrow']}</div>
+        <h2>{t['contact.title']}</h2>
+        <p class="sub">{t['contact.sub']}</p>
+        <a class="btn btn-primary" href={`mailto:${PROFILE.email}`}>
+          {t['contact.write']}
         </a>
+      </div>
+      <div class="coord">
+        <div class="line">
+          <div>
+            <small>Email</small>
+            <span id="mail">{PROFILE.email}</span>
+          </div>
+          <button type="button" class="copy" data-copy="mail">
+            {t['contact.copy']}
+          </button>
+        </div>
+        <div class="line">
+          <div>
+            <small>LinkedIn</small>
+            <span>linkedin.com/in/eharoun</span>
+          </div>
+          <a class="copy" href={PROFILE.linkedin} target="_blank" rel="noopener">
+            {t['contact.open']}
+          </a>
+        </div>
       </div>
     </div>
   </div>

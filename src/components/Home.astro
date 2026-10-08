@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from './Hero.astro';
-import Work from './Work.astro';
-import Path from './Path.astro';
-import Skills from './Skills.astro';
-import Match from './Match.astro';
+import Proof from './Proof.astro';
 import Closing from './Closing.astro';
+import Cases from '../islands/Cases';
+import Path from '../islands/Path';
+import Skills from '../islands/Skills';
 import type { Lang } from '../data/ui';
 
 interface Props {
@@ -16,9 +16,21 @@ const { lang } = Astro.props;
 
 <Layout lang={lang}>
   <Hero lang={lang} />
-  <Work lang={lang} />
-  <Path lang={lang} />
-  <Skills lang={lang} />
-  <Match lang={lang} />
+  <Proof lang={lang} />
+  <section class="block" id="work">
+    <div class="wrap">
+      <Cases lang={lang} client:idle />
+    </div>
+  </section>
+  <section class="block" id="path">
+    <div class="wrap">
+      <Path lang={lang} client:visible />
+    </div>
+  </section>
+  <section class="block" id="skills">
+    <div class="wrap">
+      <Skills lang={lang} client:visible />
+    </div>
+  </section>
   <Closing lang={lang} />
 </Layout>

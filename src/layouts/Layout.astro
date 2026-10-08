@@ -18,7 +18,7 @@ const t = ui[lang];
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const paths = { fr: `${base}/`, en: `${base}/en/` };
 const abs = (path: string) => new URL(path, Astro.site).href;
-const sections = ['work', 'path', 'skills', 'match', 'faq', 'contact'] as const;
+const sections = ['match', 'work', 'path', 'skills', 'faq', 'contact'] as const;
 
 const person = {
   '@context': 'https://schema.org',

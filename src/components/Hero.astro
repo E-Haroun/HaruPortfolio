@@ -1,83 +1,34 @@
 ---
+import Guide from '../islands/Guide';
+import MatchLab from '../islands/MatchLab';
 import { ui, type Lang } from '../data/ui';
 
 interface Props {
   lang: Lang;
 }
-const t = ui[Astro.props.lang];
+const { lang } = Astro.props;
+const t = ui[lang];
 ---
 
-<div class="wrap">
-  <div class="hero">
-    <div>
-      <div class="eyebrow">{t['hero.eyebrow']}</div>
-      <h1 set:html={t['hero.title']} />
-      <p class="lead">{t['hero.lead']}</p>
-      <div class="ctas">
-        <a class="btn btn-primary" href="#work">
-          {t['hero.cta1']}
-        </a>
-        <a class="btn btn-ghost" href="#match">
-          {t['hero.cta2']}
-        </a>
+<div class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="status">
+      <i></i>
+      {t['hero.status']}
+    </p>
+    <h1 set:html={t['hero.title']} />
+    <div class="hero-row">
+      <div>
+        <p class="lead">{t['hero.lead']}</p>
+        <div class="facts">
+          <span set:html={t['hero.f1']} />
+          <span set:html={t['hero.f2']} />
+          <span set:html={t['hero.f3']} />
+        </div>
       </div>
-      <div class="facts">
-        <span set:html={t['hero.f1']} />
-        <span set:html={t['hero.f2']} />
-        <span set:html={t['hero.f3']} />
-      </div>
+      <Guide lang={lang} client:idle />
     </div>
-
-    <!-- Signature element: a real KQL query and the incident as a step chart. Only the three measured levels, no invented points. -->
-    <aside class="incident" aria-label={t['inc.label']}>
-      <div class="bar">
-        <span>{t['inc.title']}</span>
-        <span class="sev">{t['inc.sev']}</span>
-      </div>
-      <!-- prettier-ignore -->
-      <pre><span class="kw">requests</span>
-| <span class="kw">where</span> name == <span class="str">"scoring"</span>
-| <span class="kw">summarize</span> p95 = percentile(duration, 95)
-    <span class="kw">by</span> bin(timestamp, 1d)</pre>
-      <div class="chart">
-        <svg viewBox="0 0 360 150" role="img" aria-label={t['inc.chart']}>
-          <g stroke="var(--line)" stroke-width="1">
-            <line x1="40" y1="20" x2="350" y2="20"></line>
-            <line x1="40" y1="70" x2="350" y2="70"></line>
-            <line x1="40" y1="120" x2="350" y2="120"></line>
-          </g>
-          <g font-family="JetBrains Mono Variable, monospace" font-size="10" fill="var(--muted)">
-            <text x="34" y="23" text-anchor="end">
-              70 s
-            </text>
-            <text x="34" y="73" text-anchor="end">
-              35 s
-            </text>
-            <text x="34" y="123" text-anchor="end">
-              0 s
-            </text>
-            <text x="80" y="140" text-anchor="middle">
-              {t['inc.before']}
-            </text>
-            <text x="195" y="140" text-anchor="middle">
-              {t['inc.during']}
-            </text>
-            <text x="310" y="140" text-anchor="middle">
-              {t['inc.after']}
-            </text>
-          </g>
-          <rect x="125" y="20" width="140" height="100" fill="var(--signal-soft)"></rect>
-          <polyline
-            fill="none"
-            stroke="var(--accent)"
-            stroke-width="2.5"
-            stroke-linejoin="round"
-            points="40,111 125,111 125,20 265,20 265,111 350,111"
-          ></polyline>
-          <circle cx="265" cy="20" r="4" fill="var(--signal)"></circle>
-        </svg>
-      </div>
-      <p class="find" set:html={t['inc.find']} />
-    </aside>
+    <MatchLab lang={lang} client:load />
   </div>
 </div>

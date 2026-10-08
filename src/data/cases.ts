@@ -14,6 +14,8 @@ export type Section = [heading: string, body: string | string[]];
 
 export interface Case {
   id: string;
+  /** Name used in the `where` lists of skills.ts, so a matched skill can link back to its project. */
+  mission: string;
   dom: Domain[];
   org: Tr;
   when: string;
@@ -27,6 +29,7 @@ export interface Case {
 export const CASES: Case[] = [
   {
     id: 'scoreia',
+    mission: 'LOCAM',
     dom: ['finance'],
     org: { fr: 'HPDIA · client LOCAM / ONLIZ', en: 'HPDIA · client LOCAM / ONLIZ' },
     when: '2025 –',
@@ -139,6 +142,7 @@ export const CASES: Case[] = [
   },
   {
     id: 'datarh',
+    mission: 'DataRH',
     dom: ['nlp'],
     org: { fr: 'HPDIA · projet interne', en: 'HPDIA · internal project' },
     when: '2025 – 2026',
@@ -201,6 +205,7 @@ export const CASES: Case[] = [
   },
   {
     id: 'kaldi',
+    mission: 'Zenidoc',
     dom: ['sante', 'nlp'],
     org: { fr: 'Zenidoc', en: 'Zenidoc' },
     when: '2022 – 2023',
@@ -259,6 +264,7 @@ export const CASES: Case[] = [
   },
   {
     id: 'gestbot',
+    mission: 'Orange',
     dom: ['iot'],
     org: { fr: 'Orange · R&D', en: 'Orange · R&D' },
     when: '2022',
@@ -320,6 +326,7 @@ export const CASES: Case[] = [
   },
   {
     id: 'boatly',
+    mission: 'Boatly',
     dom: ['iot'],
     org: { fr: 'Amiltone · Boatly', en: 'Amiltone · Boatly' },
     when: '2023',
@@ -332,6 +339,7 @@ export const CASES: Case[] = [
   },
   {
     id: 'engage',
+    mission: 'Exolis Hoppen',
     dom: ['sante'],
     org: { fr: 'Amiltone · Exolis Hoppen', en: 'Amiltone · Exolis Hoppen' },
     when: '2023 – 2024',
@@ -344,6 +352,7 @@ export const CASES: Case[] = [
   },
   {
     id: 'skilleye',
+    mission: 'SkillEye',
     dom: ['nlp'],
     org: { fr: 'Amiltone · projet interne', en: 'Amiltone · internal project' },
     when: '2024',
@@ -356,6 +365,7 @@ export const CASES: Case[] = [
   },
   {
     id: 'covid',
+    mission: 'COVID-19',
     dom: ['sante'],
     org: { fr: 'Projet personnel', en: 'Personal project' },
     when: '',
@@ -368,6 +378,7 @@ export const CASES: Case[] = [
   },
   {
     id: 'mayash',
+    mission: 'Mayash',
     dom: ['nlp'],
     org: { fr: 'Mayash · stage', en: 'Mayash · internship' },
     when: '2021',

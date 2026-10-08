@@ -90,8 +90,70 @@ export const FAQ: Tr<[question: string, answer: string][]> = {
   ],
 };
 
-/** Example job description preloaded in the matching demo. */
-export const SAMPLE: Tr = {
-  fr: "AI Engineer – CDI – télétravail\n\nVous rejoignez l'équipe IA d'une fintech. Vous concevez des fonctionnalités LLM et RAG en Python (FastAPI), les déployez avec Docker et une CI/CD sur Azure, et suivez leur qualité en production (monitoring, tests).\n\nProfil : expérience en machine learning et NLP, SQL, embeddings. Une expérience en finance, crédit ou santé est un plus. Bonus : Kubernetes, Terraform, LangGraph.",
-  en: 'AI Engineer – permanent – remote\n\nJoin the AI team of a fintech. You design LLM and RAG features in Python (FastAPI), deploy them with Docker and CI/CD on Azure, and track their quality in production (monitoring, tests).\n\nProfile: experience in machine learning and NLP, SQL, embeddings. Experience in finance, credit or healthcare is a plus. Bonus: Kubernetes, Terraform, LangGraph.',
+/** Example job descriptions for the matching demo. The first one is loaded by default. */
+export const SAMPLES: { label: Tr; text: Tr }[] = [
+  {
+    label: { fr: 'AI Engineer · fintech', en: 'AI Engineer · fintech' },
+    text: {
+      fr: "AI Engineer – CDI – télétravail\n\nVous rejoignez l'équipe IA d'une fintech. Vous concevez des fonctionnalités LLM et RAG en Python (FastAPI), les déployez avec Docker et une CI/CD sur Azure, et suivez leur qualité en production (monitoring, tests).\n\nProfil : expérience en machine learning et NLP, SQL, embeddings. Une expérience en finance, crédit ou santé est un plus. Bonus : Kubernetes, Terraform, LangGraph.",
+      en: 'AI Engineer – permanent – remote\n\nJoin the AI team of a fintech. You design LLM and RAG features in Python (FastAPI), deploy them with Docker and CI/CD on Azure, and track their quality in production (monitoring, tests).\n\nProfile: experience in machine learning and NLP, SQL, embeddings. Experience in finance, credit or healthcare is a plus. Bonus: Kubernetes, Terraform, LangGraph.',
+    },
+  },
+  {
+    label: { fr: 'MLOps Engineer · santé', en: 'MLOps Engineer · healthcare' },
+    text: {
+      fr: 'MLOps Engineer – CDI – hybride\n\nVous industrialisez des modèles de deep learning (TensorFlow, PyTorch) pour un éditeur de logiciels de santé : conteneurs Docker, Kubernetes, CI/CD, monitoring Grafana et Prometheus, tests de charge.\n\nProfil : Python, SQL, GCP. Bonus : Terraform, AWS, Kafka.',
+      en: 'MLOps Engineer – permanent – hybrid\n\nYou take deep learning models (TensorFlow, PyTorch) to production for a healthcare software vendor: Docker containers, Kubernetes, CI/CD, Grafana and Prometheus monitoring, load testing.\n\nProfile: Python, SQL, GCP. Bonus: Terraform, AWS, Kafka.',
+    },
+  },
+  {
+    label: { fr: 'Data Engineer · crédit', en: 'Data Engineer · credit' },
+    text: {
+      fr: 'Data Engineer – freelance – télétravail\n\nVous construisez des pipelines de données PySpark et des ETL sur Azure (Data Factory, Microsoft Fabric) avec SQL Server et du CDC, et vous alimentez des tableaux de bord Power BI pour une équipe risque de crédit.\n\nBonus : Databricks, dbt, Airflow, Snowflake.',
+      en: 'Data Engineer – freelance – remote\n\nYou build PySpark data pipelines and ETL on Azure (Data Factory, Microsoft Fabric) with SQL Server and CDC, and feed Power BI dashboards for a credit risk team.\n\nBonus: Databricks, dbt, Airflow, Snowflake.',
+    },
+  },
+];
+
+/** Measured results shown next to the investigation card. Every figure comes from a real mission. */
+export const STATS: { value: string | Tr; label: Tr; from: Tr }[] = [
+  {
+    value: { fr: '6 713', en: '6,713' },
+    label: {
+      fr: "scorings concernés par un biais d'imputation KNN que j'ai mis en évidence",
+      en: 'scorings affected by a KNN imputation bias I uncovered',
+    },
+    from: { fr: 'Scoring crédit IA · LOCAM', en: 'AI credit scoring · LOCAM' },
+  },
+  {
+    value: '165 / 165',
+    label: {
+      fr: 'relances réussies : idempotence prouvée face à la double livraison de messages',
+      en: 'retries succeeded: idempotency proven against double message delivery',
+    },
+    from: { fr: 'Scoring crédit IA · LOCAM', en: 'AI credit scoring · LOCAM' },
+  },
+  {
+    value: '121 → 2',
+    label: {
+      fr: "requêtes SQL pour afficher l'écran candidats",
+      en: 'SQL queries to render the candidates screen',
+    },
+    from: { fr: 'DataRH · projet interne', en: 'DataRH · internal project' },
+  },
+  {
+    value: '≈ 20',
+    label: {
+      fr: 'microservices Azure Functions en maintenance et en évolution',
+      en: 'Azure Functions microservices maintained and evolved',
+    },
+    from: { fr: 'Scoring crédit IA · LOCAM', en: 'AI credit scoring · LOCAM' },
+  },
+];
+
+/** Traits of the guide character: adjust them so it looks like the real person. */
+export const AVATAR: { hair: 'short' | 'curly' | 'none'; beard: boolean; glasses: boolean } = {
+  hair: 'short',
+  beard: false,
+  glasses: false,
 };
