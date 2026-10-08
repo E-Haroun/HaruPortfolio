@@ -29,46 +29,36 @@ const t = ui[lang];
         ))}
       </ol>
 
-      <!-- Signature element: a real KQL query and the incident as a step chart. Only the three measured levels, no invented points. -->
-      <aside class="incident reveal" aria-label={t['inc.label']}>
-        <div class="bar">
+      <!-- The same story as a step chart: only the three measured levels, no invented points -->
+      <figure class="incident reveal">
+        <figcaption class="bar">
           <span>{t['inc.title']}</span>
           <span class="sev">{t['inc.sev']}</span>
-        </div>
-        <!-- prettier-ignore -->
-        <pre><span class="kw">requests</span>
-| <span class="kw">where</span> name == <span class="str">"scoring"</span>
-| <span class="kw">summarize</span> p95 = percentile(duration, 95)
-    <span class="kw">by</span> bin(timestamp, 1d)</pre>
-        <p class="cap">{t['inc.query']}</p>
+        </figcaption>
         <div class="chart">
-          <svg viewBox="0 0 360 150" role="img" aria-label={t['inc.chart']}>
+          <svg viewBox="0 0 360 160" role="img" aria-label={t['inc.chart']}>
             <g stroke="var(--line)" stroke-width="1">
-              <line x1="40" y1="20" x2="350" y2="20"></line>
-              <line x1="40" y1="70" x2="350" y2="70"></line>
-              <line x1="40" y1="120" x2="350" y2="120"></line>
+              <line x1="40" y1="34" x2="350" y2="34"></line>
+              <line x1="40" y1="130" x2="350" y2="130"></line>
             </g>
-            <g font-family="JetBrains Mono Variable, monospace" font-size="10" fill="var(--muted)">
-              <text x="34" y="23" text-anchor="end">
+            <g class="axis">
+              <text x="34" y="37" text-anchor="end">
                 70 s
               </text>
-              <text x="34" y="73" text-anchor="end">
-                35 s
-              </text>
-              <text x="34" y="123" text-anchor="end">
+              <text x="34" y="133" text-anchor="end">
                 0 s
               </text>
-              <text x="80" y="140" text-anchor="middle">
+              <text x="82" y="150" text-anchor="middle">
                 {t['inc.before']}
               </text>
-              <text x="195" y="140" text-anchor="middle">
+              <text x="195" y="150" text-anchor="middle">
                 {t['inc.during']}
               </text>
-              <text x="310" y="140" text-anchor="middle">
+              <text x="307" y="150" text-anchor="middle">
                 {t['inc.after']}
               </text>
             </g>
-            <rect x="125" y="20" width="140" height="100" fill="var(--signal-soft)"></rect>
+            <rect x="125" y="34" width="140" height="96" fill="var(--signal-soft)"></rect>
             <polyline
               class="trace"
               pathLength="1"
@@ -76,22 +66,22 @@ const t = ui[lang];
               stroke="var(--accent)"
               stroke-width="2.5"
               stroke-linejoin="round"
-              points="40,111 125,111 125,20 265,20 265,111 350,111"
+              points="40,122 125,122 125,34 265,34 265,122 350,122"
             ></polyline>
-            <circle cx="265" cy="20" r="4" fill="var(--signal)"></circle>
-            <!-- Hover zones: one per measured level, they light up the matching reading below -->
-            <rect class="zone z1" x="40" y="10" width="85" height="120"></rect>
-            <rect class="zone z2" x="125" y="10" width="140" height="120"></rect>
-            <rect class="zone z3" x="265" y="10" width="85" height="120"></rect>
+            <g class="val" text-anchor="middle">
+              <text x="82" y="112">
+                ≈ 6 s
+              </text>
+              <text x="195" y="24">
+                ≈ 70 s
+              </text>
+              <text x="307" y="112">
+                ≈ 6 s
+              </text>
+            </g>
           </svg>
-          <div class="readout">
-            <span class="r1">{t['inc.r1']}</span>
-            <span class="r2">{t['inc.r2']}</span>
-            <span class="r3">{t['inc.r3']}</span>
-          </div>
         </div>
-        <p class="cap">{t['inc.p95']}</p>
-      </aside>
+      </figure>
     </div>
   </div>
 </section>

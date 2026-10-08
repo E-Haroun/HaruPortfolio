@@ -30,8 +30,8 @@ export const GUIDE = {
     en: "I couldn't spot any technical skill. Try a more detailed job description.",
   },
   proof: {
-    fr: 'Un vrai incident de production : un seul appel externe bloqué 68 s, et toute la chaîne de scoring ralentit. Survolez le graphique.',
-    en: 'A real production incident: one external call hanging for 68 s, and the whole scoring chain slows down. Hover the chart.',
+    fr: 'Un vrai incident de production, raconté en quatre étapes : le symptôme, la recherche, la cause, le résultat.',
+    en: 'A real production incident, told in four steps: the symptom, the search, the cause, the outcome.',
   },
   work: {
     fr: 'Quatre études de cas détaillées. Filtrez par domaine, puis ouvrez celle qui ressemble à votre contexte.',
