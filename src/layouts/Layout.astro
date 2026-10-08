@@ -5,6 +5,10 @@ import '@fontsource-variable/jetbrains-mono';
 import '../styles/global.css';
 import { ui, type Lang } from '../data/ui';
 import { PROFILE } from '../data/extras';
+// Preloaded so the text does not reflow when the web fonts replace the fallbacks (CLS)
+import displayFont from '@fontsource-variable/familjen-grotesk/files/familjen-grotesk-latin-wght-normal.woff2?url';
+import bodyFont from '@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2?url';
+import monoFont from '@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2?url';
 
 interface Props {
   lang: Lang;
@@ -47,6 +51,9 @@ const person = {
     <link rel="alternate" hreflang="en" href={abs(paths.en)} />
     <link rel="alternate" hreflang="x-default" href={abs(paths.fr)} />
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    {[displayFont, bodyFont, monoFont].map((href) => (
+      <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />
+    ))}
     <meta name="theme-color" content="#F2F4F7" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0A0F17" media="(prefers-color-scheme: dark)" />
 
