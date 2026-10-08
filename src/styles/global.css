@@ -578,6 +578,17 @@ textarea {
   background: var(--signal-soft);
   color: var(--signal-ink);
 }
+.sector {
+  background: var(--accent-soft);
+}
+.few {
+  padding: 14px 16px;
+  border-left: 3px solid var(--signal);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: var(--signal-soft);
+  color: var(--signal-ink);
+  font-size: 15.5px;
+}
 .bars {
   list-style: none;
   margin: 0;

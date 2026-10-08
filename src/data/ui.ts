@@ -38,7 +38,10 @@ export const ui = {
     'match.score': "des compétences repérées dans l'offre figurent dans mon parcours",
     'match.hits': 'Déjà démontré en mission',
     'match.gaps': 'Pas encore démontré en mission',
+    'match.sectors': 'Secteur que je connais',
     'match.where': "Missions les plus proches de l'offre",
+    'match.few':
+      'Trop peu de compétences techniques repérées pour donner un score fiable. Cette offre ne semble pas viser un poste IA, data ou développement, ou elle est trop courte.',
     'match.open': 'Voir ce projet',
     'match.none': 'Aucune compétence technique repérée. Essayez avec une fiche de poste plus détaillée.',
     'work.eyebrow': 'Études de cas',
@@ -108,7 +111,10 @@ export const ui = {
     'match.score': 'of the skills found in the job appear in my experience',
     'match.hits': 'Already proven on a project',
     'match.gaps': 'Not yet proven on a project',
+    'match.sectors': 'Industry I know',
     'match.where': 'Closest projects to the job',
+    'match.few':
+      'Too few technical skills found to give a reliable score. This job does not seem to target an AI, data or software role, or it is too short.',
     'match.open': 'See this project',
     'match.none': 'No technical skill found. Try a more detailed job description.',
     'work.eyebrow': 'Case studies',

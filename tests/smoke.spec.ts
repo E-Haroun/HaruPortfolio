@@ -30,6 +30,21 @@ test('the matching demo scores a job description as it is typed', async ({ page 
   await expect(page.locator('.guide .bubble')).toContainText('25 %');
 });
 
+test('a job outside the field gets no score, however it is worded', async ({ page }) => {
+  await open(page, './');
+  // Everyday words that used to pass for skills: "the rest", "cutting-edge", "prompt", "production", "test"
+  await page
+    .locator('#jd')
+    .fill(
+      'Freelance data entry and web research for a cutting-edge life science platform. You gather data on ' +
+        'healthcare providers and medical experts, give prompt answers, pass a language test and support content ' +
+        'production with the rest of the team. Microsoft Office and Google Spreadsheets required.',
+    );
+  await expect(page.locator('#match .few')).toBeVisible();
+  await expect(page.locator('#match .pct')).toHaveCount(0);
+  await expect(page.locator('#match .chip.sector')).toHaveText('Santé');
+});
+
 test('a case study window opens and closes', async ({ page }) => {
   await open(page, './');
   await page.locator('[data-case=scoreia]').click();

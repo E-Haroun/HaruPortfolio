@@ -10,7 +10,8 @@ export interface Skill {
 
 const s = (label: string | Tr, where: string[], terms: string[]): Skill => ({ label, where, terms });
 
-export const SK: { g: Tr; items: Skill[] }[] = [
+/** A `sector` group lists industries, not skills: the matching demo shows them but never scores them. */
+export const SK: { g: Tr; items: Skill[]; sector?: boolean }[] = [
   {
     g: { fr: 'IA générative et LLM', en: 'Generative AI & LLMs' },
     items: [
@@ -30,7 +31,8 @@ export const SK: { g: Tr; items: Skill[] }[] = [
           'ia generative',
           'generative ai',
           'genai',
-          'prompt',
+          'prompt engineering',
+          'prompts',
         ],
       ),
       s('RAG', ['SkillEye', 'DataRH'], ['rag', 'retrieval augmented', 'retrieval-augmented']),
@@ -56,7 +58,11 @@ export const SK: { g: Tr; items: Skill[] }[] = [
         ['Mayash', 'ENSAM', 'DataRH'],
         ['nlp', 'traitement du langage', 'natural language', 'nlu', 'chatbot', 'chatbots', 'conversationnel'],
       ),
-      s('Speech', ['Zenidoc'], ['speech', 'vocale', 'asr', 'speech-to-text', 'transcription', 'voice']),
+      s(
+        'Speech',
+        ['Zenidoc'],
+        ['speech', 'vocale', 'asr', 'speech-to-text', 'speech recognition', 'voice recognition'],
+      ),
     ],
   },
   {
@@ -97,11 +103,11 @@ export const SK: { g: Tr; items: Skill[] }[] = [
           'accelerometer',
         ],
       ),
-      s('Edge AI', ['Orange'], ['tflite', 'edge', 'embarque', 'on-device', 'edge ai']),
+      s('Edge AI', ['Orange'], ['tflite', 'embarque', 'on-device', 'edge ai', 'edge computing']),
       s(
         'Vision',
         ['COVID-19'],
-        ['computer vision', 'vision par ordinateur', 'ocr', 'opencv', 'image', 'images'],
+        ['computer vision', 'vision par ordinateur', 'ocr', 'opencv', 'image processing', 'imagerie'],
       ),
     ],
   },
@@ -111,7 +117,7 @@ export const SK: { g: Tr; items: Skill[] }[] = [
       s(
         'MLOps',
         ['LOCAM', 'Zenidoc'],
-        ['mlops', 'mlflow', 'model monitoring', 'deploiement de modeles', 'model deployment', 'production'],
+        ['mlops', 'mlflow', 'model monitoring', 'deploiement de modeles', 'model deployment'],
       ),
       s('Docker', ['DataRH', 'Flotto'], ['docker', 'conteneur', 'conteneurs', 'container', 'containers']),
       s(
@@ -122,17 +128,7 @@ export const SK: { g: Tr; items: Skill[] }[] = [
       s(
         'Tests',
         ['LOCAM'],
-        [
-          'test',
-          'tests',
-          'pytest',
-          'tnr',
-          'non-regression',
-          'load testing',
-          'tests de charge',
-          'locust',
-          'qa',
-        ],
+        ['tests', 'pytest', 'tnr', 'non-regression', 'load testing', 'tests de charge', 'locust'],
       ),
       s(
         { fr: 'Observabilité', en: 'Observability' },
@@ -182,7 +178,11 @@ export const SK: { g: Tr; items: Skill[] }[] = [
     g: { fr: 'Développement', en: 'Software' },
     items: [
       s('Python', ['LOCAM', 'DataRH', 'Orange'], ['python']),
-      s('APIs', ['DataRH', 'Zenidoc'], ['api', 'apis', 'rest', 'fastapi', 'graphql', 'django', 'flask']),
+      s(
+        'APIs',
+        ['DataRH', 'Zenidoc'],
+        ['api', 'apis', 'rest api', 'api rest', 'restful', 'fastapi', 'graphql', 'django', 'flask'],
+      ),
       s(
         'TypeScript / Node.js',
         ['LOCAM', 'Zenidoc'],
@@ -194,6 +194,7 @@ export const SK: { g: Tr; items: Skill[] }[] = [
   },
   {
     g: { fr: 'Secteurs', en: 'Industries' },
+    sector: true,
     items: [
       s(
         { fr: 'Finance & crédit', en: 'Finance & credit' },

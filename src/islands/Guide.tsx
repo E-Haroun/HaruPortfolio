@@ -16,6 +16,7 @@ function line(lang: Lang): { text: string; mood: Mood } {
   if (!matchTouched.value) return { text: GUIDE.hello[lang], mood: 'wave' };
   const r = matchResult.value;
   if (!r) return { text: GUIDE.none[lang], mood: 'think' };
+  if (r.pct === null) return { text: GUIDE.few[lang], mood: 'think' };
   const tier = r.pct >= 75 ? 'high' : r.pct >= 50 ? 'mid' : 'low';
   const gap = r.gaps.length ? ` ${GUIDE.gap[lang].replace('{gap}', r.gaps[0])}` : '';
   return {

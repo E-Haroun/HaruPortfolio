@@ -50,6 +50,19 @@ export default function MatchLab({ lang }: { lang: Lang }) {
     matchTouched.value = true;
   };
   const most = result?.top[0]?.[1] ?? 1;
+  const chips = (title: string, kind: string, labels: string[]) =>
+    labels.length > 0 && (
+      <>
+        <h3>{title}</h3>
+        <div class="chips">
+          {labels.map((label, i) => (
+            <span class={`chip ${kind}`} style={{ '--i': i }} key={label}>
+              {label}
+            </span>
+          ))}
+        </div>
+      </>
+    );
 
   return (
     <div class="lab" id="match">
@@ -79,84 +92,79 @@ export default function MatchLab({ lang }: { lang: Lang }) {
         </div>
 
         <div class="lab-out">
-          {result ? (
-            <>
-              <div class="score" role="status">
-                <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
-                  <circle cx="60" cy="60" r="52" />
-                  <circle
-                    cx="60"
-                    cy="60"
-                    r="52"
-                    class="on"
-                    stroke-dasharray={RING}
-                    stroke-dashoffset={RING * (1 - pct / 100)}
-                  />
-                </svg>
-                <span class="pct">{Math.round(pct)} %</span>
-                <p>
-                  <b>
-                    {result.hits.length} / {result.hits.length + result.gaps.length}
-                  </b>{' '}
-                  {t['match.score']}.
-                </p>
-              </div>
-
-              <h3>{t['match.hits']}</h3>
-              <div class="chips">
-                {result.hits.map((h, i) => (
-                  <span
-                    class="chip hit"
-                    style={{ '--i': i }}
-                    title={h.where.join(', ')}
-                    key={L(h.label, 'fr')}
-                  >
-                    {L(h.label, lang)}
-                  </span>
-                ))}
-              </div>
-
-              {result.gaps.length > 0 && (
-                <>
-                  <h3>{t['match.gaps']}</h3>
-                  <div class="chips">
-                    {result.gaps.map((g, i) => (
-                      <span class="chip gap" style={{ '--i': i }} key={g}>
-                        {g}
-                      </span>
-                    ))}
-                  </div>
-                </>
-              )}
-
-              <h3>{t['match.where']}</h3>
-              <ol class="bars">
-                {result.top.map(([mission, n]) => {
-                  const project = CASES.find((c) => c.mission === mission);
-                  return (
-                    <li key={mission} style={{ '--w': `${(n / most) * 100}%` }}>
-                      {project ? (
-                        <button
-                          type="button"
-                          title={t['match.open']}
-                          onClick={() => (openCase.value = project.id)}
-                        >
-                          {mission} <span aria-hidden="true">→</span>
-                        </button>
-                      ) : (
-                        <span>{mission}</span>
-                      )}
-                      <i />
-                      <b>{n}</b>
-                    </li>
-                  );
-                })}
-              </ol>
-            </>
-          ) : (
+          {!result ? (
             <p class="note" role="status">
               {t['match.none']}
             </p>
+          ) : (
+            <>
+              {result.pct === null ? (
+                <p class="few" role="status">
+                  {t['match.few']}
+                </p>
+              ) : (
+                <div class="score" role="status">
+                  <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                    <circle cx="60" cy="60" r="52" />
+                    <circle
+                      cx="60"
+                      cy="60"
+                      r="52"
+                      class="on"
+                      stroke-dasharray={RING}
+                      stroke-dashoffset={RING * (1 - pct / 100)}
+                    />
+                  </svg>
+                  <span class="pct">{Math.round(pct)} %</span>
+                  <p>
+                    <b>
+                      {result.hits.length} / {result.hits.length + result.gaps.length}
+                    </b>{' '}
+                    {t['match.score']}.
+                  </p>
+                </div>
+              )}
+
+              {chips(
+                t['match.hits'],
+                'hit',
+                result.hits.map((h) => L(h.label, lang)),
+              )}
+              {chips(t['match.gaps'], 'gap', result.gaps)}
+              {chips(
+                t['match.sectors'],
+                'sector',
+                result.sectors.map((s) => L(s.label, lang)),
+              )}
+
+              {result.pct !== null && (
+                <>
+                  <h3>{t['match.where']}</h3>
+                  <ol class="bars">
+                    {result.top.map(([mission, n]) => {
+                      const project = CASES.find((c) => c.mission === mission);
+                      return (
+                        <li key={mission} style={{ '--w': `${(n / most) * 100}%` }}>
+                          {project ? (
+                            <button
+                              type="button"
+                              title={t['match.open']}
+                              onClick={() => (openCase.value = project.id)}
+                            >
+                              {mission} <span aria-hidden="true">→</span>
+                            </button>
+                          ) : (
+                            <span>{mission}</span>
+                          )}
+                          <i />
+                          <b>{n}</b>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </>
+              )}
+            </>
           )}
         </div>
       </div>

@@ -25,6 +25,10 @@ export const GUIDE = {
     fr: "Et je ne cache pas les manques : {gap}, je ne l'ai pas encore démontré en mission.",
     en: "And I don't hide the gaps: I have not proven {gap} on a project yet.",
   },
+  few: {
+    fr: 'Je vois trop peu de compétences techniques dans cette offre pour donner un score honnête. Elle ne vise sans doute pas un poste IA, data ou développement.',
+    en: 'I see too few technical skills in this job to give an honest score. It is probably not an AI, data or software role.',
+  },
   none: {
     fr: "Je n'ai repéré aucune compétence technique. Essayez avec une fiche de poste plus détaillée.",
     en: "I couldn't spot any technical skill. Try a more detailed job description.",
